@@ -5,8 +5,10 @@ public class Account {
     private String name;
     private String topic;
 
-    public Account(){
-
+    public Account(int id, String name, String topic){
+        this.id = id;
+        this.name = name;
+        this. topic = topic;
     }
 
     public int getId(){

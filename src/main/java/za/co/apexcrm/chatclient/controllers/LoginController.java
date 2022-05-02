@@ -17,9 +17,11 @@ import za.co.apexcrm.chatclient.domain.Login;
 import za.co.apexcrm.chatclient.domain.User;
 
 import static za.co.apexcrm.chatclient.ChatClientApplication.chatBaseUrl;
+import static za.co.apexcrm.chatclient.ChatClientApplication.token;
 
 @RestController
 public class LoginController {
+
     @Autowired
     private RestTemplate restTemplate;
 
@@ -36,8 +38,7 @@ public class LoginController {
         HttpEntity<String> request = new HttpEntity<>(loginBody.toString(), headers);
 
         ResponseEntity<Login> response = restTemplate.postForEntity( url, request , Login.class );
+        token = response.getBody().getAccessToken();
         return "logged in with " + response.getBody().getUsername();
     }
-
-
 }

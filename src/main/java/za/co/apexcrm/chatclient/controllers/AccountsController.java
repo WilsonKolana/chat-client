@@ -20,7 +20,6 @@ import java.util.List;
 
 import static za.co.apexcrm.chatclient.ChatClientApplication.*;
 
-
 @RestController
 public class AccountsController {
     @Autowired

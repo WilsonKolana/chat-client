@@ -4,10 +4,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class mainController {
+public class AccountsController {
 
-    @RequestMapping("/")
+    @RequestMapping("/accounts")
     public String hello(){
-        return "hello";
+        return "list of accessible accounts";
     }
 }

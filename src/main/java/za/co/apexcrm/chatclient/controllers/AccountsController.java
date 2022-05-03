@@ -27,6 +27,10 @@ public class AccountsController {
 
     @RequestMapping("/accounts")
     public String listAccessibleAccounts() throws ParseException {
+        if(token == null){
+            return "You are not authorized, Please call the login endpoint first";
+        }
+
         String url = chatBaseUrl + "/api/account";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);

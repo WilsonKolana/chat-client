@@ -25,6 +25,9 @@ public class ChatsController {
 
     @RequestMapping("/chats/latest")
     public String latestChat() throws ParseException {
+        if(accessibleAccounts.getAccessibleAccounts().size() == 0){
+            return "No accessible accounts found, Make sure you call the login and the accounts endpoints first";
+        }
         int firstAccountId = accessibleAccounts.getAccessibleAccounts().get(0).getId();
 
         String url = chatBaseUrl + "/api/chat/" + firstAccountId + "?sort=lastUpdated";
@@ -50,6 +53,11 @@ public class ChatsController {
 
     @PostMapping("/chats/latest/{tag}")
     public String tagLatest(@PathVariable String tag){
+
+        if(accessibleAccounts.getAccessibleAccounts().size() == 0){
+            return "No accessible accounts found, Make sure you call the login and the accounts endpoints first";
+        }
+
         int firstAccountId = accessibleAccounts.getAccessibleAccounts().get(0).getId();
 
         String url = chatBaseUrl + "/api/chat/" +firstAccountId+"/tag/" +latestChatId;
